@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+ <meta charset="utf-8">
+ <title>5模擬文カジノ特設サイト</title>
+ <meta name="description" content="詳細">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+    body{
+        margin:0;
+        padding:0;
+        text-align: center;
+    }
+    .top{
+        height:100vh;
+        background-size: 100vw auto;
+        background-repeat: no-repeat;
+    }
+    .bet{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: row;    
+    justify-content: center;        /*中央揃え*/
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.choice{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: row;    
+    justify-content: center;        /*中央揃え*/
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.bet div{
+    background-color: blueviolet;
+    margin: 3vw;
+}
+.choice div{
+    background-color: rgb(226, 43, 73);
+    margin: 3vw;
+}
+    @media screen and (max-width:768px) { 
+        .top{
+            background-image: url("img/op_sm.png");
+            
+        }
+        .bet div{
+            width:25vw;
+    height:25vw;
+        }
+        .choice div{
+            width:25vw;
+    height:25vw;
+        }
+ 
+}
+@media screen and (min-width:768px) and ( max-width:1024px) {
+    .top{
+            background-image: url("img/op_tb.png");
+            
+        }
+        .bet div{
+            width:25vw;
+    height:25vw;
+        }
+        .choice div{
+            width:25vw;
+    height:25vw;
+        }
+ 
+}
+@media screen and (min-width:1024px) {
+    .top{
+            background-image: url("img/op_pc.png");
+            
+        }
+        .bet div{
+            width:15vw;
+    height:15vw;
+        }
+        .choice div{
+            width:15vw;
+    height:15vw;
+        }
+ 
+}
+
+ </style>
+ </head>
+ <body>
+    <div class="top">
+    </div>
+    <div>
+        <h1>第１ラウンド</h1>
+        <h2>第１問</h2>
+        <h4>ベットする金額を選んでください</h4>
+        <p></p>
+        <div class="bet">
+            <div><p>100</p></div>
+            <div><p>200</p></div>
+            <div><p>300</p></div>
+            <div><p>400</p></div>
+            <div><p>500</p></div>
+            <div><p>600</p></div>
+        </div>
+        <h3>あなたがbetした金額</h3>
+        <h1>400 TKC</h1>
+        <h4>ホンモノだと思う方を選んでください</h4>
+        <div class="choice">
+            <div><p>A</p></div>
+            <div><p>B</p></div>
+        </div>
+    </div>
+ </body>
+</html>
