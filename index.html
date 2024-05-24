@@ -43,9 +43,17 @@
     padding-left: 10vw;
     padding-right: 10vw;
 }
+.choice div p{
+    font-size: 2rem;
+}
 .bet div{
-    background-color: blueviolet;
+    background-image: url(img/coin.png);
+    background-size: cover;
     margin: 3vw;
+}
+.bet div p{
+    font-size: 2rem;
+
 }
 .choiceA{
     background-color: rgb(226, 43, 73);
@@ -55,6 +63,18 @@
     background-color: blue;
     margin: 3vw;
 }
+.choiceT{
+    background-color:#37ad88;
+    margin: 3vw;
+}
+.choiceO{
+    background-color: #ad7e37;
+    margin: 3vw;
+}
+.choiceN{
+    background-color: #ad37a6;
+    margin: 3vw;
+}
 .res{
     position:fixed;
     left: 50%;
@@ -62,7 +82,21 @@
   transform: translateX(-50%) translateY(-50%);
   z-index: 10;
 }
+.res11{
+    position:fixed;
+    left: 50%;
+  top: 75%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+}
 .res2{
+    position:fixed;
+    left: 50%;
+  top: 75%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+}
+.res12{
     position:fixed;
     left: 50%;
   top: 75%;
@@ -124,12 +158,12 @@
     <div class="top">
     </div>
     <div class="shoji">
-        <h3>所持ツクコイン</h3>
+        <h3 class="last">所持ツクコイン</h3>
         <h3 class="coin">1000 TKC</h3>
     </div>
     <div class="round1">
         
-        <h1>第１ラウンド</h1>
+        <h1>第1ラウンド</h1>
         <h2 class="mon">第1問</h2>
         <h4>ベットする金額を選んでください</h4>
         <p></p>
@@ -155,7 +189,52 @@
             <h2>結果へ</h2>
         </div>
     </div>
-    <div class="round2">
+    <div class="round2" id="kaku">
+        <h1>第2ラウンド</h1>
+        <h2 class="mon2">第1問</h2>
+        <h4>ベットする金額を選んでください</h4>
+        <p></p>
+        <div class="bet">
+            <div id="bet24"><p>400</p></div>
+            <div id="bet25"><p>500</p></div>
+            <div id="bet26"><p>600</p></div>
+        </div>
+        <h3>あなたがbetした金額:</h3>
+        <h1 class="tkc2">0 TKC</h1>
+        <h4>ホンモノだと思う方を選んでください</h4>
+        <div class="choice">
+            <div class="choiceT"><p>塚田</p></div>
+            <div class="choiceO"><p>鬼澤</p></div>
+            <div class="choiceN"><p>西澤</p></div>
+        </div>
+        <div class="res11">
+            <h2>結果へ</h2>
+        </div>
+        <div class="res12">
+            <h2>結果へ</h2>
+        </div>
+    </div>
+
+    <div class="round3" id="kaku">
+        <h1>第3ラウンド</h1>
+        <h2 class="mon3">第1問</h2>
+        <h4>ベットする金額を選んでください</h4>
+        <p></p>
+        <div class="bet">
+            <div id="bet30"><p>1000</p></div>
+            <div id="bet31"><p>1200</p></div>
+            <div id="bet32"><p>1400</p></div>
+        </div>
+        <h3>あなたがbetした金額:</h3>
+        <h1 class="tkc3">0 TKC</h1>
+        <h4 class="tama">玉入れで、何個入ると思う？</h4>
+        <p class="tama2">予想して、以下の四角に数字を入力してね</p>
+        <p class="tama3">近ければ近いほど多くの特点が入るよ！</p>
+        <form class="yosou" action="">
+            <input type="text" value="" id="atai"><br>
+            <p>下の送信ボタンは、合図があるまで押さないで！</p>
+            <button type="submit">送信</button>
+        </form>
 
     </div>
  </body>
@@ -163,6 +242,10 @@
 <script>
     $('.res').hide();
     $('.res2').hide();
+    $('.res11').hide();
+    $('.res12').hide();
+    $('.round2').hide();
+    $('.round3').hide();
     var bet = 0;
     var wallet = 1000;
     $('#bet1').on('click', function() {
@@ -190,6 +273,30 @@ $('#bet6').on('click', function() {
         $('.tkc').text('600 TKC');
         bet = 600;
 });
+$('#bet24').on('click', function() {
+        $('.tkc2').text('400 TKC');
+        bet = 400;
+});
+$('#bet25').on('click', function() {
+        $('.tkc2').text('500 TKC');
+        bet = 500;
+});
+$('#bet26').on('click', function() {
+        $('.tkc2').text('600 TKC');
+        bet = 600;
+});
+$('#bet30').on('click', function() {
+        $('.tkc3').text('1000 TKC');
+        bet = 1000;
+});
+$('#bet31').on('click', function() {
+        $('.tkc3').text('1200 TKC');
+        bet = 1200;
+});
+$('#bet32').on('click', function() {
+        $('.tkc3').text('1400 TKC');
+        bet = 1400;
+});
 $('.choiceA').on('click', function() {
     $('.choice').css('flex','none');
         $('.choiceA').css('width','100vw');
@@ -213,6 +320,44 @@ $('.choiceB').on('click', function() {
         wallet = wallet - bet;
 
 });
+
+$('.choiceT').on('click', function() {
+    $('.choice').css('flex','none');
+        $('.choiceT').css('width','100vw');
+        $('.choiceT').css('height','100vh');
+        $('.choiceT').css('position','fixed');
+        $('.choiceT').css('top','0');
+        $('.choiceT').css('z-index','1');
+        $('.res11').show();
+        wallet -= bet;
+        console.log(wallet);
+
+});
+$('.choiceO').on('click', function() {
+    $('.choice').css('flex','none');
+        $('.choiceO').css('width','100vw');
+        $('.choiceO').css('height','100vh');
+        $('.choiceO').css('position','fixed');
+        $('.choiceO').css('top','0');
+        $('.choiceO').css('z-index','1');
+        $('.res11').show();
+        wallet-= bet;
+        console.log(wallet);
+
+});
+$('.choiceN').on('click', function() {
+    $('.choice').css('flex','none');
+        $('.choiceN').css('width','100vw');
+        $('.choiceN').css('height','100vh');
+        $('.choiceN').css('position','fixed');
+        $('.choiceN').css('top','0');
+        $('.choiceN').css('z-index','1');
+        $('.res12').show();
+        wallet += bet*2;
+        console.log(wallet);
+
+});
+
 $('.res').on('click', function() {
     $('.choiceA').css('width','');
         $('.choiceA').css('height','');
@@ -226,9 +371,33 @@ $('.res').on('click', function() {
         }else if($('.mon').text() == "第2問"){
             $('.mon').text("第3問");
         }else if($('.mon').text() == "第3問"){
-            $('.round1').hide()
+            $('.round1').hide();
+            $('.round2').show();
         }
 });
+
+$('.res11').on('click', function() {
+    $('.choiceT').css('width','');
+        $('.choiceT').css('height','');
+        $('.choiceT').css('position','');
+        $('.choiceT').css('top','');
+        $('.choiceT').css('z-index','');
+
+        $('.choiceO').css('width','');
+        $('.choiceO').css('height','');
+        $('.choiceO').css('position','');
+        $('.choiceO').css('top','');
+        $('.choiceO').css('z-index','');
+
+
+        $('.coin').text(wallet);
+        $('.res11').hide();
+        $('.round2').hide();
+        $('.round3').show();
+        console.log('kakakakaka')
+});
+
+
 $('.res2').on('click', function() {
     $('.choiceB').css('width','');
         $('.choiceB').css('height','');
@@ -242,8 +411,81 @@ $('.res2').on('click', function() {
         }else if($('.mon').text() == "第2問"){
             $('.mon').text("第3問");
         }else if($('.mon').text() == "第3問"){
-            $('.round1').hide()
+            $('.round1').hide();
+            $('.round2').show();
         }
 });
+
+
+$('.res12').on('click', function() {
+    $('.choiceN').css('width','');
+        $('.choiceN').css('height','');
+        $('.choiceN').css('position','');
+        $('.choiceN').css('top','');
+        $('.choiceN').css('z-index','');
+        $('.coin').text(wallet);
+        $('.res12').hide();
+        $('.round2').hide();
+        $('.round3').show();
+        console.log('lalalalala')
+});
+
+$(".yosou").submit(function () {
+  var gomi = $("#atai").val()
+  if($('.mon3').text() == "第1問"){
+  console.log("ooiiooii")
+  if(gomi == 4){
+    wallet += bet*2;
+  }else if(gomi == 3){
+    wallet += bet*1.5;
+  }else if(gomi == 5){
+    wallet += bet*1.5;
+  }else{
+    wallet -= bet;
+  }
+  $('.coin').text(wallet);
+  $('.tama').text('二つのクソでかサイコロの出る目の和を予想しよう！');
+  $('.mon3').text('第２問');
+  $('.yosou').addClass('yosou2');
+  $('.yosou').removeClass('yosou');
+}else{
+    console.log("ooiiooii2222")
+  if(gomi == 9){
+    wallet += bet*2;
+  }else if(gomi == 8){
+    wallet += bet*1.5;
+  }else if(gomi == 10){
+    wallet += bet*1.5;
+  }else{
+    wallet -= bet;
+  }
+  $('.coin').text(wallet);
+  $('.round3').hide();
+  $('.last').text("あなたの最終所持コイン");
+
+}
+
+//   $('.round3').hide();
+//   $('.last').text("あなたの最終所持コイン");
+  return false;
+});
+
+// $(".yosou2").submit(function () {
+//   var gomi = $("#atai").val()
+//   console.log("ooiiooii2222")
+//   if(gomi == 9){
+//     wallet += bet*2;
+//   }else if(gomi == 8){
+//     wallet += bet*1.5;
+//   }else if(gomi == 10){
+//     wallet += bet*1.5;
+//   }else{
+//     wallet -= bet;
+//   }
+//   $('.coin').text(wallet);
+//   $('.round3').hide();
+//   $('.last').text("あなたの最終所持コイン");
+//   return false;
+// });
 
 </script>
