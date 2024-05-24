@@ -5,6 +5,7 @@
  <title>5模擬文カジノ特設サイト</title>
  <meta name="description" content="詳細">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
  <style>
     body{
         margin:0;
@@ -46,9 +47,30 @@
     background-color: blueviolet;
     margin: 3vw;
 }
-.choice div{
+.choiceA{
     background-color: rgb(226, 43, 73);
     margin: 3vw;
+}
+.choiceB{
+    background-color: blue;
+    margin: 3vw;
+}
+.res{
+    position:fixed;
+    left: 50%;
+  top: 75%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+}
+.res2{
+    position:fixed;
+    left: 50%;
+  top: 75%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+}
+.shoji{
+    
 }
     @media screen and (max-width:768px) { 
         .top{
@@ -101,26 +123,127 @@
  <body>
     <div class="top">
     </div>
-    <div>
+    <div class="shoji">
+        <h3>所持ツクコイン</h3>
+        <h3 class="coin">1000 TKC</h3>
+    </div>
+    <div class="round1">
+        
         <h1>第１ラウンド</h1>
-        <h2>第１問</h2>
+        <h2 class="mon">第1問</h2>
         <h4>ベットする金額を選んでください</h4>
         <p></p>
         <div class="bet">
-            <div><p>100</p></div>
-            <div><p>200</p></div>
-            <div><p>300</p></div>
-            <div><p>400</p></div>
-            <div><p>500</p></div>
-            <div><p>600</p></div>
+            <div id="bet1"><p>100</p></div>
+            <div id="bet2"><p>200</p></div>
+            <div id="bet3"><p>300</p></div>
+            <div id="bet4"><p>400</p></div>
+            <div id="bet5"><p>500</p></div>
+            <div id="bet6"><p>600</p></div>
         </div>
-        <h3>あなたがbetした金額</h3>
-        <h1>400 TKC</h1>
+        <h3>あなたがbetした金額:</h3>
+        <h1 class="tkc">0 TKC</h1>
         <h4>ホンモノだと思う方を選んでください</h4>
         <div class="choice">
-            <div><p>A</p></div>
-            <div><p>B</p></div>
+            <div class="choiceA"><p>A</p></div>
+            <div class="choiceB"><p>B</p></div>
         </div>
+        <div class="res">
+            <h2>結果へ</h2>
+        </div>
+        <div class="res2">
+            <h2>結果へ</h2>
+        </div>
+    </div>
+    <div class="round2">
+
     </div>
  </body>
 </html>
+<script>
+    $('.res').hide();
+    $('.res2').hide();
+    var bet = 0;
+    var wallet = 1000;
+    $('#bet1').on('click', function() {
+        $('.tkc').text('100 TKC');
+        bet = 100;
+});
+$('#bet2').on('click', function() {
+        $('.tkc').text('200 TKC');
+        bet = 200;
+        console.log(bet);
+});
+$('#bet3').on('click', function() {
+        $('.tkc').text('300 TKC');
+        bet = 300;
+});
+$('#bet4').on('click', function() {
+        $('.tkc').text('400 TKC');
+        bet = 400;
+});
+$('#bet5').on('click', function() {
+        $('.tkc').text('500 TKC');
+        bet = 500;
+});
+$('#bet6').on('click', function() {
+        $('.tkc').text('600 TKC');
+        bet = 600;
+});
+$('.choiceA').on('click', function() {
+    $('.choice').css('flex','none');
+        $('.choiceA').css('width','100vw');
+        $('.choiceA').css('height','100vh');
+        $('.choiceA').css('position','fixed');
+        $('.choiceA').css('top','0');
+        $('.choiceA').css('z-index','1');
+        $('.res').show();
+        wallet += bet*2;
+        console.log(wallet);
+
+});
+$('.choiceB').on('click', function() {
+    $('.choice').css('flex','none');
+        $('.choiceB').css('width','100vw');
+        $('.choiceB').css('height','100vh');
+        $('.choiceB').css('position','fixed');
+        $('.choiceB').css('top','0');
+        $('.choiceB').css('z-index','1');
+        $('.res2').show();
+        wallet = wallet - bet;
+
+});
+$('.res').on('click', function() {
+    $('.choiceA').css('width','');
+        $('.choiceA').css('height','');
+        $('.choiceA').css('position','');
+        $('.choiceA').css('top','');
+        $('.choiceA').css('z-index','');
+        $('.coin').text(wallet);
+        $('.res').hide();
+        if($('.mon').text() == "第1問"){
+            $('.mon').text('第2問');
+        }else if($('.mon').text() == "第2問"){
+            $('.mon').text("第3問");
+        }else if($('.mon').text() == "第3問"){
+            $('.round1').hide()
+        }
+});
+$('.res2').on('click', function() {
+    $('.choiceB').css('width','');
+        $('.choiceB').css('height','');
+        $('.choiceB').css('position','');
+        $('.choiceB').css('top','');
+        $('.choiceB').css('z-index','');
+        $('.coin').text(wallet);
+        $('.res2').hide();
+        if($('.mon').text() == "第1問"){
+            $('.mon').text('第2問');
+        }else if($('.mon').text() == "第2問"){
+            $('.mon').text("第3問");
+        }else if($('.mon').text() == "第3問"){
+            $('.round1').hide()
+        }
+});
+
+</script>
