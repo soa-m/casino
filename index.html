@@ -2,15 +2,19 @@
 <html lang="ja">
  <head>
  <meta charset="utf-8">
- <title>5模擬文カジノ特設サイト</title>
+ <title>10模擬文カジノ特設サイト</title>
  <meta name="description" content="詳細">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
  <style>
     body{
         margin:0;
         padding:0;
         text-align: center;
+        color:#ffffff;
     }
     .top{
         height:100vh;
@@ -104,6 +108,7 @@
   z-index: 10;
 }
 .shoji{
+    background-color: cadetblue;
     
 }
     @media screen and (max-width:768px) { 
@@ -118,6 +123,9 @@
         .choice div{
             width:25vw;
     height:25vw;
+        }
+        .choice div p{
+            font-size: 20px;
         }
  
 }
@@ -151,19 +159,43 @@
         }
  
 }
+h3{
+    margin:0;
+}
+.choice div{
+    border: 1rem solid;
+}
 
+.bet div{
+    font-family: "Lobster", sans-serif;
+    color: #000000;
+}
+h4{
+    font-size:35px;
+}
+.content{
+    padding:0;
+    margin:0;
+    background-image: url(img/bg.png);
+    background-repeat: repeat;
+    background-size: 16.666% auto;
+}
+.res h2{
+    font-size: 40px;
+}
  </style>
  </head>
  <body>
     <div class="top">
     </div>
+    <div class="content">
     <div class="shoji">
         <h3 class="last">所持ツクコイン</h3>
-        <h3 class="coin">1000 TKC</h3>
+        <h3 class="coin" style="font-size: 40px;">1000 TKC</h3>
     </div>
     <div class="round1">
         
-        <h1>第1ラウンド</h1>
+        <h1>第1ラウンド 「非行少年の主張」 </h1>
         <h2 class="mon">第1問</h2>
         <h4>ベットする金額を選んでください</h4>
         <p></p>
@@ -177,10 +209,10 @@
         </div>
         <h3>あなたがbetした金額:</h3>
         <h1 class="tkc">0 TKC</h1>
-        <h4>ホンモノだと思う方を選んでください</h4>
+        <h4>許すOR許さない？</h4>
         <div class="choice">
-            <div class="choiceA"><p>A</p></div>
-            <div class="choiceB"><p>B</p></div>
+            <div class="choiceA"><p>許す</p></div>
+            <div class="choiceB"><p>許さない</p></div>
         </div>
         <div class="res">
             <h2>結果へ</h2>
@@ -190,8 +222,8 @@
         </div>
     </div>
     <div class="round2" id="kaku">
-        <h1>第2ラウンド</h1>
-        <h2 class="mon2">第1問</h2>
+        <h1 class="monmon">第2ラウンド「リアル人狼」</h1>
+        <h2 class="mon2">第1問「班長は誰？」</h2>
         <h4>ベットする金額を選んでください</h4>
         <p></p>
         <div class="bet">
@@ -203,9 +235,9 @@
         <h1 class="tkc2">0 TKC</h1>
         <h4>ホンモノだと思う方を選んでください</h4>
         <div class="choice">
-            <div class="choiceT"><p>塚田</p></div>
-            <div class="choiceO"><p>鬼澤</p></div>
-            <div class="choiceN"><p>西澤</p></div>
+            <div class="choiceT"><p>A</p></div>
+            <div class="choiceO"><p>B</p></div>
+            <div class="choiceN"><p>C</p></div>
         </div>
         <div class="res11">
             <h2>結果へ</h2>
@@ -236,6 +268,7 @@
             <button type="submit">送信</button>
         </form>
 
+    </div>
     </div>
  </body>
 </html>
@@ -304,6 +337,7 @@ $('.choiceA').on('click', function() {
         $('.choiceA').css('position','fixed');
         $('.choiceA').css('top','0');
         $('.choiceA').css('z-index','1');
+        $('.choiceA').css('border','none');
         $('.res').show();
         wallet += bet*2;
         console.log(wallet);
@@ -316,6 +350,7 @@ $('.choiceB').on('click', function() {
         $('.choiceB').css('position','fixed');
         $('.choiceB').css('top','0');
         $('.choiceB').css('z-index','1');
+        $('.choiceB').css('border','none');
         $('.res2').show();
         wallet = wallet - bet;
 
@@ -328,8 +363,9 @@ $('.choiceT').on('click', function() {
         $('.choiceT').css('position','fixed');
         $('.choiceT').css('top','0');
         $('.choiceT').css('z-index','1');
-        $('.res11').show();
-        wallet -= bet;
+        $('.choiceT').css('border','none');
+        $('.res12').show();
+        wallet += bet*2;
         console.log(wallet);
 
 });
@@ -340,6 +376,7 @@ $('.choiceO').on('click', function() {
         $('.choiceO').css('position','fixed');
         $('.choiceO').css('top','0');
         $('.choiceO').css('z-index','1');
+        $('.choiceO').css('border','none');
         $('.res11').show();
         wallet-= bet;
         console.log(wallet);
@@ -352,8 +389,9 @@ $('.choiceN').on('click', function() {
         $('.choiceN').css('position','fixed');
         $('.choiceN').css('top','0');
         $('.choiceN').css('z-index','1');
-        $('.res12').show();
-        wallet += bet*2;
+        $('.choiceN').css('border','none');
+        $('.res11').show();
+        wallet-= bet;
         console.log(wallet);
 
 });
@@ -364,36 +402,48 @@ $('.res').on('click', function() {
         $('.choiceA').css('position','');
         $('.choiceA').css('top','');
         $('.choiceA').css('z-index','');
+        $('.choiceA').css('border','1rem solid');
         $('.coin').text(wallet);
         $('.res').hide();
-        if($('.mon').text() == "第1問"){
-            $('.mon').text('第2問');
-        }else if($('.mon').text() == "第2問"){
-            $('.mon').text("第3問");
-        }else if($('.mon').text() == "第3問"){
-            $('.round1').hide();
-            $('.round2').show();
-        }
+        // if($('.mon').text() == "第1問"){
+        //     $('.mon').text('第2問');
+        // }else if($('.mon').text() == "第2問"){
+        //     $('.mon').text("第3問");
+        // }else if($('.mon').text() == "第3問"){
+        //     $('.round1').hide();
+        //     $('.round2').show();
+        // }
+        $('.round1').hide();
+        $('.round2').show();
 });
 
 $('.res11').on('click', function() {
-    $('.choiceT').css('width','');
-        $('.choiceT').css('height','');
-        $('.choiceT').css('position','');
-        $('.choiceT').css('top','');
-        $('.choiceT').css('z-index','');
+    $('.choiceN').css('width','');
+        $('.choiceN').css('height','');
+        $('.choiceN').css('position','');
+        $('.choiceN').css('top','');
+        $('.choiceN').css('z-index','');
+        $('.choiceN').css('border','1rem solid');
 
         $('.choiceO').css('width','');
         $('.choiceO').css('height','');
         $('.choiceO').css('position','');
         $('.choiceO').css('top','');
         $('.choiceO').css('z-index','');
+        $('.choiceO').css('border','1rem solid');
 
 
         $('.coin').text(wallet);
         $('.res11').hide();
-        $('.round2').hide();
-        $('.round3').show();
+        // $('.round2').hide();
+        // $('.round3').show();
+        if($('.mon2').text() == "第1問「班長は誰？」"){
+            $('.mon2').text('--');
+            $('.monmon').text('第三ラウンド「目指せ！#Z世代」');
+        }else if($('.mon2').text() == "--"){
+            $('.round2').hide();
+            $('.last').text("あなたの最終所持コイン");
+        }
         console.log('kakakakaka')
 });
 
@@ -404,29 +454,41 @@ $('.res2').on('click', function() {
         $('.choiceB').css('position','');
         $('.choiceB').css('top','');
         $('.choiceB').css('z-index','');
+        $('.choiceB').css('border','1rem solid');
         $('.coin').text(wallet);
         $('.res2').hide();
-        if($('.mon').text() == "第1問"){
-            $('.mon').text('第2問');
-        }else if($('.mon').text() == "第2問"){
-            $('.mon').text("第3問");
-        }else if($('.mon').text() == "第3問"){
-            $('.round1').hide();
-            $('.round2').show();
-        }
+        // if($('.mon').text() == "第1問"){
+        //     $('.mon').text('第2問');
+        // }else if($('.mon').text() == "第2問"){
+        //     $('.mon').text("第3問");
+        // }else if($('.mon').text() == "第3問"){
+        //     $('.round1').hide();
+        //     $('.round2').show();
+        // }
+        $('.round1').hide();
+        $('.round2').show();
 });
 
 
 $('.res12').on('click', function() {
-    $('.choiceN').css('width','');
-        $('.choiceN').css('height','');
-        $('.choiceN').css('position','');
-        $('.choiceN').css('top','');
-        $('.choiceN').css('z-index','');
+    $('.choiceT').css('width','');
+        $('.choiceT').css('height','');
+        $('.choiceT').css('position','');
+        $('.choiceT').css('top','');
+        $('.choiceT').css('z-index','');
+        $('.choiceT').css('border','1rem solid');
         $('.coin').text(wallet);
         $('.res12').hide();
         $('.round2').hide();
-        $('.round3').show();
+        // $('.round3').show();
+
+        if($('.mon2').text() == "第1問「班長は誰？」"){
+            $('.mon2').text('--');
+            $('.monmon').text('第三ラウンド「目指せ！#Z世代」');
+        }else if($('.mon2').text() == "--"){
+            $('.round2').hide();
+            $('.last').text("あなたの最終所持コイン");
+        }
         console.log('lalalalala')
 });
 
